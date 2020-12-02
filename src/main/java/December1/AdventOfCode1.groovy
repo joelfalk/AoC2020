@@ -15,9 +15,10 @@ content.close()
     /*
     Part 1:
     for each index in list, see if valid value to sum index + valid value = 2020 exists.
-    if exists, print the product of index + valid value
+    if exists, print the product of index + valid value. Used a for-loop to be able to break when correct
+    answer is found.
     */
-for (index in list) {
+for (index in list){
     if (list.contains(2020 - index)) {
         println "Part 1: " + (index * (2020 - index))
         break
@@ -26,10 +27,11 @@ for (index in list) {
 
     /*
     Part 2:
-        nested for-loops. Not good.
+        nested for-loops. Not good. Same procedure as above. Used for-loop for
+        inner loop to be able to break when found.
     */
 def part2
-for (value1 in list) {
+list.each{value1 ->
     for (value2 in list){
         def value3 = 2020 - (value1 + value2)
         if(list.contains(value3)){
