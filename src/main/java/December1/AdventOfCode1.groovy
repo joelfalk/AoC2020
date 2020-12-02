@@ -3,22 +3,22 @@ package December1
 def startTime = System.currentTimeMillis()
 
 /*
-     fill up HashMap with values.
+     fill up ArrayList with values.
      */
-def map = new HashMap<String, Integer>()
+def list = new ArrayList<Integer>()
 def content = new File("AdventOfCode-1").newInputStream()
 content.eachLine {line ->
-    map.put(line, line.toInteger())
+    list.add(line.toInteger())
 }
 content.close()
 
     /*
-    for each entry in map, see if valid value to sum entry + valid value = 2020 exists.
-    if exists, print the product of entry + valid value
+    for each index in list, see if valid value to sum index + valid value = 2020 exists.
+    if exists, print the product of index + valid value
     */
-for (index in map) {
-    if (map.containsValue(2020 - index.value)) {
-        println index.value*(2020-index.value)
+for (index in list) {
+    if (list.contains(2020 - index)) {
+        println index*(2020-index)
         break
     }
 }
