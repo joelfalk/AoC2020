@@ -1,6 +1,8 @@
 package December1
 
-    /*
+def startTime = System.currentTimeMillis()
+
+/*
      fill up HashMap with values.
      */
 def map = new HashMap<String, Integer>()
@@ -20,3 +22,5 @@ for (index in map) {
         break
     }
 }
+
+println "total time " + (System.currentTimeMillis() - startTime)
