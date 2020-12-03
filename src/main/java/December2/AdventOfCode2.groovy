@@ -1,7 +1,7 @@
 /*
-    fill upp array with list of strings from input data
-    which was split row by row by "-", ": " and " ".
-    This in each row as an list of:  [ MIN, MAX, CHAR, PASSWORD ]
+    manipulate input data by splitting
+    each row on regex "-", ": " and " ", which
+    will result in a list of:  [ MIN, MAX, CHAR, PASSWORD ]
 
     for each row, count if PASSWORD contains CHAR
     at least MIN times and at most MAX times.
