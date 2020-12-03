@@ -42,8 +42,7 @@ content2.splitEachLine('-|:+\\s|\\s',
             def correctChar = row[2]
             def charAtPos1 = row[3].charAt(row[0].toInteger() - 1)
             def charAtPos2 = row[3].charAt(row[1].toInteger() - 1)
-
-            if ((charAtPos1 == correctChar ^ charAtPos2 == correctChar)) {
+            if (charAtPos1 == correctChar ^ charAtPos2 == correctChar) {
                 result2++
             }
 
