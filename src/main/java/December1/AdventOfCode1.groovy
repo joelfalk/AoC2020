@@ -6,7 +6,7 @@ def startTime = System.currentTimeMillis()
      fill up ArrayList with values.
      */
 def list = new ArrayList<Integer>()
-def content = new File("AdventOfCode-1").newInputStream()
+def content = new File("AdventOfCode1").newInputStream()
 content.eachLine {line ->
     list.add(line.toInteger())
 }
@@ -36,6 +36,7 @@ list.each{value1 ->
         def value3 = 2020 - (value1 + value2)
         if(list.contains(value3)){
             part2 = (value1 * value2 * value3)
+
             break
         }
     }
