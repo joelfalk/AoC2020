@@ -1,2 +1,2 @@
 # AoC2020
-Advent Of Coe 2020
+Advent Of Code 2020
