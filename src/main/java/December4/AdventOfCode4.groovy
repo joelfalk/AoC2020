@@ -35,13 +35,3 @@ map.each { x ->
     }
 }
 println(count)
-/*
-def result = map.entrySet().stream()
-        .filter({ fieldsCondition -> fieldsCondition.getValue().size() >= 7 })
-        .filter({ fields -> fields.getValue().each { cIdCondition -> cIdCondition.substring(0, 2) == "cid" } })
-        .forEach({ s -> count++ })
-
-
-map.println()
-return "Part 1: " + result
-*/
