@@ -10,7 +10,6 @@
     if stepsX should be active.
  */
 
-
 private static Integer treeCounter(int stepsX, int stepsY) {
     def content = new File('AdventOfCode3').newInputStream()
     def x = stepsX
@@ -20,7 +19,6 @@ private static Integer treeCounter(int stepsX, int stepsY) {
         if (y == 1) {
             return
         }
-
         if ((y + 1) % stepsY == 0) {
             if (row.charAt(x) == '#') {
                 result++
@@ -34,14 +32,12 @@ private static Integer treeCounter(int stepsX, int stepsY) {
         }
     }
     return result
-
 }
 
-
 static void main(String[] args) {
-    println(treeCounter(1,1))
-    println(treeCounter(3,1))
-    println(treeCounter(5,1))
-    println(treeCounter(7,1))
+    println(treeCounter(1, 1))
+    println(treeCounter(3, 1))
+    println(treeCounter(5, 1))
+    println(treeCounter(7, 1))
     println(treeCounter(1, 2))
 }
