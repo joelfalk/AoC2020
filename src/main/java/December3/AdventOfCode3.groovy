@@ -1,5 +1,3 @@
-import com.sun.xml.internal.ws.wsdl.writer.document.Part
-
 /*
     PART 1:
     read input data. for each row (skip first row)
@@ -13,7 +11,7 @@ import com.sun.xml.internal.ws.wsdl.writer.document.Part
  */
 
 
-private int treeCounter(int stepsX, int stepsY) {
+private static Integer treeCounter(int stepsX, int stepsY) {
     def content = new File('AdventOfCode3').newInputStream()
     def x = stepsX
     def result = 0
@@ -41,12 +39,9 @@ private int treeCounter(int stepsX, int stepsY) {
 
 
 static void main(String[] args) {
-
-    println(treeCounter(3,1))
     println(treeCounter(1,1))
+    println(treeCounter(3,1))
     println(treeCounter(5,1))
     println(treeCounter(7,1))
     println(treeCounter(1, 2))
-
-
 }
