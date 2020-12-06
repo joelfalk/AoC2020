@@ -1,3 +1,5 @@
+import java.util.stream.Collectors
+
 def content = new File('AdventOfCode4').newInputStream()
 
 Map<Integer, List<String>> map = new HashMap<>()
@@ -18,20 +20,17 @@ content.splitEachLine('\\s',
         }
 )
 
-def count = 0
-count = map.count { x -> x.getValue().size() == 8 }
-map.each { x ->
-    if (x.getValue().size() == 7) {
-        def bool = true
-        x.getValue().each { str ->
-            if (str.contains("cid")) {
-                bool = false
-            } else {
-            }
-        }
-        if (bool == true) {
-            count++
-        }
-    }
+private static boolean validPassportFields(List<String> list) {
+    List condition = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"]
+
+    return  list.containsAll(condition)
 }
-println(count)
+
+
+long s = map.values().stream()
+        .map({ fields -> fields.stream().map({ field -> field.substring(0, 3)}).collect(Collectors.toList()) })
+        .filter({passports -> validPassportFields(passports)})
+        .count()
+
+
+println("Part 1: " + s)
