@@ -20,7 +20,6 @@ content.splitEachLine('\\s',
                         map.put(key, line)
                     }
                 } else {
-                    map.get(key).sort()
                     key++
                 }
         }
@@ -37,6 +36,8 @@ long part1 = map.values().stream()
         .filter({ passports -> hasValidPassportFields(passports) })
         .count()
 
+println("Part 1: " + part1)
+
 private static boolean hasValidPassportFields(List<String> list) {
     List reqFields = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"]
 
@@ -49,18 +50,19 @@ private static boolean hasValidPassportFields(List<String> list) {
 
 /*
     Part 2:
-    filter based on fields, then sequencial for each
+    filter based on fields, then filter based on
     value based condition for each field.
-
  */
+
 long part2 = map.values().stream()
         .filter({ passport -> hasValidPassportFields(passport) })
-        .filter({ passport -> validPassportFieldsValues(passport) })
+        .filter({ passport -> hasValidPassportFieldsValues(passport) })
         .count()
 
-private static boolean validPassportFieldsValues(List<String> list) {
-    list.sort()
+println("Part 2: " + part2)
 
+private static boolean hasValidPassportFieldsValues(List<String> list) {
+   list.sort()
     List<String> splitList = list.stream()
             .filter({ s -> s.substring(0, 3) != "cid" })
             .map({ s -> s.substring(4) })
@@ -73,8 +75,6 @@ private static boolean validPassportFieldsValues(List<String> list) {
             validHeight(splitList[4]) &&
             validIssueYear(splitList[5]) &&
             validPassportId(splitList[6])
-
-
 }
 
 private static boolean validBirthYear(String birthYear) {
@@ -84,26 +84,21 @@ private static boolean validBirthYear(String birthYear) {
 
 private static boolean validEyeColor(String eyeColor) {
     def validEyeColors = ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"]
-    def e = validEyeColors.contains(eyeColor) && eyeColor.size() == 3
     return validEyeColors.contains(eyeColor) && eyeColor.size() == 3
 }
 
 private static boolean validExpirationYear(String experationYear) {
-    def c = experationYear.size() == 4 && experationYear.toInteger() >= 2020 && experationYear.toInteger() <= 2030
     return experationYear.size() == 4 && experationYear.toInteger() >= 2020 && experationYear.toInteger() <= 2030
 }
 
 private static boolean validHairColor(String hairColor) {
-    def g = hairColor.getAt(0) == "#" && hairColor.substring(1).matches("[A-Fa-f0-9]{6}")
     return hairColor.getAt(0) == "#" && hairColor.substring(1).matches("[A-Fa-f0-9]{6}")
 }
 
 private static boolean validHeight(String height) {
     if (height.substring(height.size() - 2) == "cm") {
-        def s = 150 <= height.substring(0, height.size() - 2).toInteger() && height.substring(0, height.size() - 2).toInteger() <= 193
         return 150 <= height.substring(0, height.size() - 2).toInteger() && height.substring(0, height.size() - 2).toInteger() <= 193
     } else if (height.substring(height.size() - 2) == "in") {
-        def a = 59 <= height.substring(0, height.size() - 2).toInteger() && height.substring(0, height.size() - 2).toInteger() <= 76
         return 59 <= height.substring(0, height.size() - 2).toInteger() && height.substring(0, height.size() - 2).toInteger() <= 76
     } else {
         return false
@@ -111,15 +106,11 @@ private static boolean validHeight(String height) {
 }
 
 private static boolean validIssueYear(String issueYear) {
-    def sx = issueYear.size() == 4 && issueYear.toInteger() >= 2010 && issueYear.toInteger() <= 2020
     return issueYear.size() == 4 && issueYear.toInteger() >= 2010 && issueYear.toInteger() <= 2020
 }
 
 private static boolean validPassportId(String passportId) {
-    def er = passportId.matches("[0-9]{9}")
     return passportId.matches("[0-9]{9}")
 }
 
 
-println("Part 1: " + part1)
-println("Part 2: " + part2)
