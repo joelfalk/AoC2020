@@ -78,7 +78,6 @@ private static boolean hasValidPassportFieldsValues(List<String> list) {
 }
 
 private static boolean validBirthYear(String birthYear) {
-    def t = birthYear.size() == 4 && birthYear.toInteger() >= 1920 && birthYear.toInteger() <= 2002
     return birthYear.size() == 4 && birthYear.toInteger() >= 1920 && birthYear.toInteger() <= 2002
 }
 
